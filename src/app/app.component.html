@@ -1,0 +1,26 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+
+    <div class="navbar-nav">
+
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+
+        <a class="nav-item nav-link" routerLink="/admin">Admin</a>
+
+        <a class="nav-item nav-link" routerLink="/super-admin">Super Admin</a>
+
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+
+        <h3>{{user.username | uppercase}}</h3>
+
+    </div>
+
+</nav>
+
+<!-- main app container -->
+<div class="container">
+
+    <router-outlet></router-outlet>
+
+</div>
+
