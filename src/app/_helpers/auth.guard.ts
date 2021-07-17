@@ -16,31 +16,43 @@ export class AuthGuard implements CanActivate {
 
         const user = this.authenticationService.userValue;
 
-        
         // checking if user is authenticated
-        if (user) {
+        if (user) {       
 
-            // No roles included user can enter
-            if (!route.data.roles) return true;
-            
-            // if there are roles we search for one that matches the rout
-            if (route && route.data && route.data.roles) {
-                
-                for (let role of user.role) {
-                    
-                    // Finding 1 ore more matching roles
-                    if (route.data.roles.includes(role)) {                        
-                        
-                        // logged in so return true
-                        return true;
-                        
-                    }
-                }
-            }      
-         
-            this.router.navigate(['/']);
-           
-            return false;           
+            // check if route is restricted by role
+            if (route.data.roles && route.data.roles.indexOf(user.role) === -1) {
+
+                // role not authorized so redirect to home page
+                this.router.navigate(['/']);
+
+                return false;
+
+            }
+
+            // authorized so return true
+            return true;
+
+            // // No roles included user can enter
+            // if (!route.data.roles) return true;
+
+            // // if there are roles we search for one that matches the rout
+            // if (route && route.data && route.data.roles) {
+
+            //     for (let role of user.role) {
+
+            //         // Finding 1 ore more matching roles
+            //         if (route.data.roles.includes(role)) {                        
+
+            //             // logged in so return true
+            //             return true;
+
+            //         }
+            //     }
+            // }      
+
+            // this.router.navigate(['/']);
+
+            // return false;           
 
         } else {
 

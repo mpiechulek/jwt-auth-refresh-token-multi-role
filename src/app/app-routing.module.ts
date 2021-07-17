@@ -12,9 +12,9 @@ const routes: Routes = [
 
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
 
-    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [ Role.SuperAdmin, Role.Admin] } },
+    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles:  Role.Admin } },
 
-    { path: 'super-admin', component: SuperAdminComponent, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin] } },
+    { path: 'super-admin', component: SuperAdminComponent, canActivate: [AuthGuard], data: { roles: Role.God } },
 
     { path: 'login', component: LoginComponent },
 

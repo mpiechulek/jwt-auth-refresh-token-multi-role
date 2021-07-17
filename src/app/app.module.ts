@@ -14,6 +14,8 @@ import { AuthenticationService } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { AdminComponent } from './admin';
+import { RoleAccessesDirective } from './role-accesses.directive';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -25,8 +27,9 @@ import { AdminComponent } from './admin';
         AppComponent,
         HomeComponent,
         LoginComponent,
-        AdminComponent
-    ],
+        AdminComponent,
+        RoleAccessesDirective
+   ],
     providers: [
         { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthenticationService] },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

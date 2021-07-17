@@ -23,9 +23,9 @@ let users = JSON.parse(sessionStorage.getItem(usersKey)) || [];
 if (!users.length) {
 
     users = [
-        { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'Admin', role: [Role.Admin], refreshTokens: [] },
-        { id: 2, username: 'user', password: 'user', firstName: 'User', lastName: 'User', role: [Role.User], refreshTokens: [] },
-        { id: 3, username: 'superadmin', password: 'superadmin', firstName: 'SuperAdmin', lastName: 'SuperAdmin', role: [Role.SuperAdmin], refreshTokens: [] }
+        { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'Admin', role: Role.Admin, refreshTokens: [] },
+        { id: 2, username: 'user', password: 'user', firstName: 'User', lastName: 'User', role: Role.User, refreshTokens: [] },
+        { id: 3, username: 'god', password: 'god', firstName: 'Mr.God', lastName: 'God', role: Role.God, refreshTokens: [] }
     ]
 
     sessionStorage.setItem(usersKey, JSON.stringify(users));
@@ -203,7 +203,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
          */
         function isAdmin() {
 
-            return isLoggedIn() && currentUser().role.includes(Role.Admin);
+            // return isLoggedIn() && currentUser().role.includes(Role.Admin);
+            return isLoggedIn() && currentUser().indexOf(Role.Admin) === -1;
 
         }
 
